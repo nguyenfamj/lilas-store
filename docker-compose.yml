@@ -1,0 +1,14 @@
+version: '3'
+services:
+  db:
+    container_name: db
+    image: postgres:15.4
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_DB=lilas
+      - POSTGRES_USER=lilas_admin
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./db-data/:/var/lib/postgresql/data
+    restart: unless-stopped
