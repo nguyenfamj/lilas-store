@@ -1,0 +1,11 @@
+{
+  "name": "@lilas/config",
+  "version": "0.0.0",
+  "main": "index.ts",
+  "license": "MIT",
+  "files": [
+    ".eslintrc.js",
+    "postcss.config.js",
+    "tailwind.config.js"
+  ]
+}
