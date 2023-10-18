@@ -1,2 +1,1 @@
-// component exports
-export { NavBar } from './layout/NavBar';
+export * from './components/index';
