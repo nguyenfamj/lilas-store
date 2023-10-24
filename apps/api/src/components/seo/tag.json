@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_seo_tags",
+  "info": {
+    "displayName": "tag",
+    "icon": "priceTag"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "slug": {
+      "type": "string"
+    }
+  }
+}
