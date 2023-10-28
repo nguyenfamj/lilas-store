@@ -22,6 +22,9 @@ module.exports = {
           ...defaultTheme.fontFamily.serif,
         ],
       },
+      transitionProperty: {
+        width: 'width',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
