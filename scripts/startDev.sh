@@ -1,3 +1,7 @@
+source ~/.nvm/nvm.sh
+nvm use
+wait
+
 #/bin/sh
 echo "Compose database for Strapi API"
 docker-compose up -d
