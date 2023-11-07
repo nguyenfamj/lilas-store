@@ -1,12 +1,12 @@
 'use client';
 import React, { useContext } from 'react';
-import { GlobalContext } from '../../context';
-import { NavigationHeader } from '../../types/navigations';
+import { GlobalContext } from '../../../context';
 import Link from 'next/link';
-import DynamicSearchBar from '../DynamicSearchBar';
+import DynamicSearchBar from './DynamicSearchBar';
+import { NormalLinkComponent } from '../../../types/strapi';
 
 type Props = {
-  headers: NavigationHeader[];
+  headers: (NormalLinkComponent & { subHeaders?: NormalLinkComponent[] })[];
 };
 
 export default function Sidebar({ headers }: Props) {
@@ -32,7 +32,7 @@ export default function Sidebar({ headers }: Props) {
                   className='pr-2 motion-reduce:transition-none relative after:absolute after:w-0 after:h-0.5 after:block after:bg-indigo-800 hover:after:w-full after:transition-all after:duration-300 after:ease-in'
                   href={header.url || '/not-found'}
                 >
-                  {header.title}
+                  {header.text}
                 </Link>
               </li>
             ))}

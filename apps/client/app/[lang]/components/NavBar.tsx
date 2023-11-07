@@ -1,5 +1,5 @@
 'use client';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import Logo from 'ui/components/Logo';
 import {
   Bars2Icon,
@@ -10,13 +10,13 @@ import {
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import Button from 'ui/components/Button';
-import { GlobalContext } from '../../context';
-import type { NavigationHeader } from '../../types/navigations';
-import DynamicSearchBar from '../DynamicSearchBar';
+import { GlobalContext } from '../../../context';
+import DynamicSearchBar from './DynamicSearchBar';
 import UIHelper from 'ui/utils/UIHelper';
+import { NormalLinkComponent } from '../../../types/strapi';
 
 interface Props {
-  mainHeaders: NavigationHeader[];
+  mainHeaders: (NormalLinkComponent & { subHeaders?: NormalLinkComponent[] })[];
 }
 
 export default function Navbar({ mainHeaders }: Props) {
@@ -28,6 +28,7 @@ export default function Navbar({ mainHeaders }: Props) {
     setSearchBarActivated,
   } = useContext(GlobalContext);
 
+  console.log(mainHeaders);
   return (
     <header className='relative flex items-center justify-center w-full px-2 py-4'>
       <div className='container flex'>
@@ -47,15 +48,15 @@ export default function Navbar({ mainHeaders }: Props) {
         <h1 className='m-0 leading-none lg:flex-1'>
           <Logo />
         </h1>
-        <nav className='items-center hidden text-sm font-normal uppercase lg:flex font-josefin'>
+        <nav className='items-center hidden text-base font-light lg:flex font-josefin'>
           <ul className='flex items-center'>
-            {mainHeaders.map((mainHeader) => (
+            {mainHeaders?.map((mainHeader) => (
               <li key={mainHeader.url} className='px-2 md:mx-8 sm:mx-4'>
                 <Link
                   className='pr-2 motion-reduce:transition-none relative after:absolute after:mt-1 after:w-0 after:h-0.5 after:block after:bg-indigo-800 hover:after:w-full after:transition-all after:duration-300 after:ease-in'
                   href={mainHeader.url || '/not-found'}
                 >
-                  {mainHeader.title}
+                  {mainHeader.text}
                 </Link>
               </li>
             ))}
