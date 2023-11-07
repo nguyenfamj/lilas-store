@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_layout_nav_bars",
+  "info": {
+    "displayName": "NavBar",
+    "icon": "pinMap",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "mainHeaders": {
+      "type": "component",
+      "repeatable": true,
+      "component": "links.link",
+      "required": true
+    },
+    "logo": {
+      "displayName": "logo",
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.logo"
+    },
+    "promobar": {
+      "displayName": "Promo Bar",
+      "type": "component",
+      "repeatable": false,
+      "component": "layout.promo-bar"
+    }
+  }
+}
