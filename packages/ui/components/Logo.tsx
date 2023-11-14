@@ -1,16 +1,18 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import lilasLogo from '../assets/logo.png';
+import fallbackLogo from '../assets/logo.png';
 
-type Props = {};
+type Props = { img?: string; alt?: string };
 
-const Logo = (props: Props) => {
+const Logo = ({ img = fallbackLogo, alt = '' }: Props) => {
   return (
     <Link href='/'>
       <Image
         className='sm:w-full sm:max-w-[90px] max-w-[70px]'
-        src={lilasLogo}
-        alt='Logo'
+        src={img}
+        height={100}
+        width={100}
+        alt={alt}
         priority
       />
     </Link>

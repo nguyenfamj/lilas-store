@@ -18,7 +18,7 @@ export default function Sidebar({ headers }: Props) {
   return (
     <>
       <aside
-        className={`bg-indigo-50 fixed h-full sm:rounded-r-lg sm:w-[500px] w-full py-8 px-12 lg:hidden font-josefin font-light text-lg transition-transform ${
+        className={`z-30 bg-indigo-50 fixed h-full sm:rounded-r-lg sm:w-[500px] w-full py-8 px-12 lg:hidden font-josefin font-light text-lg transition-transform ${
           sidebarActivated ? 'translate-x-0' : '-translate-x-full'
         } ease-in-out duration-300`}
       >

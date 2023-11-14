@@ -2,20 +2,14 @@ import Navbar from './components/NavBar';
 import Sidebar from './components/SideBar';
 import GlobalContextProvider from '../../context';
 import './globals.css';
-import { Josefin_Sans, Crimson_Text } from 'next/font/google';
+import { Josefin_Sans } from 'next/font/google';
 import PromoBar from './components/PromoBar';
-import { getStrapiGlobal } from './utils/strapi-api';
+import strapiAPI from './utils/strapi-api';
 import { ClientGlobal } from '../../types/strapi';
 
 const josefin = Josefin_Sans({
   subsets: ['latin', 'vietnamese'],
   variable: '--font-josefin',
-});
-
-const crimsontxt = Crimson_Text({
-  subsets: ['latin', 'vietnamese'],
-  variable: '--font-crimsontxt',
-  weight: ['400'],
 });
 
 export const metadata = {
@@ -30,18 +24,23 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { lang: string };
 }) {
-  const globals: ClientGlobal = await getStrapiGlobal(params.lang);
+  const globals: ClientGlobal = await strapiAPI.getGlobal(params.lang);
   if (!globals.data) return null;
 
   const { navbar, footer } = globals.data.attributes;
-  console.log(navbar);
 
   return (
     <html lang={params.lang}>
-      <body className={`${josefin.variable} ${crimsontxt.variable}`}>
+      <body className={`${josefin.variable}`}>
         <GlobalContextProvider>
           <PromoBar data={navbar.promobar} />
-          <Navbar mainHeaders={navbar.mainHeaders} />
+          <Navbar
+            mainHeaders={navbar.mainHeaders}
+            logo={{
+              urlPath: navbar.logo.img.data.attributes.url,
+              alt: navbar.logo.img.data.attributes.alternativeText,
+            }}
+          />
           <Sidebar headers={navbar.mainHeaders} />
           <main>{children}</main>
         </GlobalContextProvider>
