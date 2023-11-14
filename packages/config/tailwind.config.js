@@ -25,6 +25,9 @@ module.exports = {
       transitionProperty: {
         width: 'width',
       },
+      flex: {
+        carousel: '0 0 100%',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],
