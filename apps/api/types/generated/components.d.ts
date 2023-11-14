@@ -53,6 +53,19 @@ export interface LayoutPromoBar extends Schema.Component {
   };
 }
 
+export interface LinksButtonLink extends Schema.Component {
+  collectionName: 'components_links_button_links';
+  info: {
+    displayName: 'button-link';
+  };
+  attributes: {
+    url: Attribute.String;
+    openInNewTab: Attribute.Boolean & Attribute.DefaultTo<false>;
+    text: Attribute.String;
+    type: Attribute.Enumeration<['primary', 'secondary']>;
+  };
+}
+
 export interface LinksLink extends Schema.Component {
   collectionName: 'components_links_links';
   info: {
@@ -101,6 +114,21 @@ export interface MetaMetadata extends Schema.Component {
   attributes: {
     title: Attribute.String & Attribute.Required;
     description: Attribute.Text & Attribute.Required;
+  };
+}
+
+export interface SectionsHeroImage extends Schema.Component {
+  collectionName: 'components_sections_hero_images';
+  info: {
+    displayName: 'Hero Image';
+    icon: 'landscape';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    description: Attribute.Text;
+    image: Attribute.Media;
+    buttons: Attribute.Component<'links.button-link', true>;
   };
 }
 
@@ -162,9 +190,11 @@ declare module '@strapi/types' {
       'layout.logo': LayoutLogo;
       'layout.nav-bar': LayoutNavBar;
       'layout.promo-bar': LayoutPromoBar;
+      'links.button-link': LinksButtonLink;
       'links.link': LinksLink;
       'links.social-links': LinksSocialLinks;
       'meta.metadata': MetaMetadata;
+      'sections.hero-image': SectionsHeroImage;
       'shared.meta-social': SharedMetaSocial;
       'shared.seo': SharedSeo;
     }
