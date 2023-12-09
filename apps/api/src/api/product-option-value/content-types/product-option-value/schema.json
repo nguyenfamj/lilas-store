@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_option_values",
+  "info": {
+    "singularName": "product-option-value",
+    "pluralName": "product-option-values",
+    "displayName": "Product Option Value",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "product_option": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product-option.product-option",
+      "inversedBy": "product_option_values"
+    },
+    "product_variants": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-variant.product-variant",
+      "mappedBy": "product_option_value"
+    },
+    "value": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    }
+  }
+}
