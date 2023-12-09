@@ -6,6 +6,7 @@ import { Josefin_Sans } from 'next/font/google';
 import PromoBar from './components/PromoBar';
 import strapiAPI from './utils/strapi-api';
 import { ClientGlobal } from '../../types/strapi';
+import Footer from './components/Footer';
 
 const josefin = Josefin_Sans({
   subsets: ['latin', 'vietnamese'],
@@ -43,6 +44,7 @@ export default async function RootLayout({
           />
           <Sidebar headers={navbar.mainHeaders} />
           <main>{children}</main>
+          <Footer />
         </GlobalContextProvider>
       </body>
     </html>

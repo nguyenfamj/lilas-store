@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@formatjs/intl": "^2.9.5",
+    "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@lilas/config": "*",
     "@stripe/stripe-js": "^2.1.7",

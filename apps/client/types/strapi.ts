@@ -1,4 +1,8 @@
-export const STRAPI_ENDPOINTS = { GLOBAL: '/global', HOMEPAGE: '/homepage' };
+export const STRAPI_ENDPOINTS = {
+  GLOBAL: '/global',
+  HOMEPAGE: '/homepage',
+  PRODUCT_COLLECTIONS: '/product-collections',
+};
 
 // Base type for all Strapi API type
 interface BaseType<T> {

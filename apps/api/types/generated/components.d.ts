@@ -1,5 +1,16 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface ContentTextIcon extends Schema.Component {
+  collectionName: 'components_content_text_icons';
+  info: {
+    displayName: 'textIcon';
+  };
+  attributes: {
+    icon: Attribute.Media;
+    text: Attribute.Text & Attribute.Required;
+  };
+}
+
 export interface LayoutFooter extends Schema.Component {
   collectionName: 'components_layout_footers';
   info: {
@@ -186,6 +197,7 @@ export interface SharedSeo extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'content.text-icon': ContentTextIcon;
       'layout.footer': LayoutFooter;
       'layout.logo': LayoutLogo;
       'layout.nav-bar': LayoutNavBar;

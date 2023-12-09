@@ -92,4 +92,54 @@ export default {
       options,
     );
   },
+
+  getProductCollectionBySlug: async (slug: string, lang: string) => {
+    const accessToken = getAPIAccessToken();
+
+    const options = { headers: generateBaseHeaders(accessToken) };
+    const urlQsParams = {
+      filters: {
+        slug: {
+          $eq: slug,
+        },
+        is_active: true,
+      },
+      populate: {
+        products: { populate: ['images', 'product_variants'] },
+      },
+      locale: lang,
+    };
+
+    return await fetchStrapiAPI(
+      STRAPI_ENDPOINTS.PRODUCT_COLLECTIONS,
+      urlQsParams,
+      options,
+    );
+  },
+
+  getProductCollectionChildrenBySlug: async (slug: string, lang: string) => {
+    const accessToken = getAPIAccessToken();
+
+    const options = { headers: generateBaseHeaders(accessToken) };
+    const urlQsParams = {
+      filters: {
+        slug: {
+          $eq: slug,
+        },
+        is_active: true,
+      },
+      populate: {
+        child_collections: {
+          populate: ['cover_image'],
+        },
+      },
+      locale: lang,
+    };
+
+    return await fetchStrapiAPI(
+      STRAPI_ENDPOINTS.PRODUCT_COLLECTIONS,
+      urlQsParams,
+      options,
+    );
+  },
 };
